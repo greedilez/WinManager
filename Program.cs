@@ -13,7 +13,7 @@ namespace WinManager
     {
         private static Form1 form;
 
-        private static string msg = "Version 0.1 (Stable). Developed by Timur Uzun, 2022.";
+        private static string msg = "Version 0.1.1 (Stable). Developed by Timur Uzun, 2022.";
 
         [STAThread]
         static void Main()
@@ -81,6 +81,23 @@ namespace WinManager
             }
         }
 
+        public static void DisableMaxMinAnimations()
+        {
+            try
+            {
+                if (AskIfUserSure())
+                {
+                    RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop\WindowMetrics", true);
+                    key.SetValue("MinAnimate", 0);
+                    MessageBox.Show($"Minimizing/Maximizing animations have been disabled. Reboot your pc.", "Success.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private static bool AskIfUserSure()
         {
             DialogResult result = MessageBox.Show("Are you sure?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -92,3 +109,4 @@ namespace WinManager
         }
     }
 }
+
