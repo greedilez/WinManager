@@ -22,5 +22,8 @@ namespace WinManager
         private void disUpdt_Click(object sender, EventArgs e) => Program.DisableUpdates();
 
         private void deskBldNum_Click(object sender, EventArgs e) => Program.DisableDesktopBuildNumberShowState();
+
+        private void disMaxWin_Click(object sender, EventArgs e) => Program.DisableMaxMinAnimations();
     }
 }
+
